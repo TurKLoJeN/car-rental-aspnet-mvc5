@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBLADMIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="10" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="100" />
+    <Property Name="RESIM" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TBLARABA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORI" Type="tinyint" />
+    <Property Name="ARABAISIM" Type="varchar" MaxLength="50" />
+    <Property Name="ARABADETAY" Type="varchar(max)" />
+    <Property Name="ARABAFIYAT" Type="int" />
+    <Property Name="RESIM" Type="varchar" MaxLength="50" />
+    <Property Name="PLAKA" Type="varchar" MaxLength="500" />
+    <Property Name="DURUM" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLHAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TBLILETISIMBILGI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PHONE" Type="varchar" MaxLength="20" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+    <Property Name="GOOGLEMAP" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TBLILETISIMGEC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AD" Type="varchar" MaxLength="30" />
+    <Property Name="MAIL" Type="varchar" MaxLength="30" />
+    <Property Name="PHONE" Type="varchar" MaxLength="15" />
+    <Property Name="MESSAGE" Type="varchar" MaxLength="1000" />
+    <Property Name="TARIH" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="TBLKATEGORI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORIAD" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TBLKIRALA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ARABA" Type="int" />
+    <Property Name="ISIM" Type="varchar" MaxLength="30" />
+    <Property Name="MAIL" Type="varchar" MaxLength="30" />
+    <Property Name="TELEFON" Type="varchar" MaxLength="15" />
+    <Property Name="ALISTARIH" Type="smalldatetime" />
+    <Property Name="GETIRTARIH" Type="smalldatetime" />
+    <Property Name="DURUM" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TBLARABA_TBLKATEGORI1">
+    <End Role="TBLKATEGORI" Type="Self.TBLKATEGORI" Multiplicity="0..1" />
+    <End Role="TBLARABA" Type="Self.TBLARABA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLARABA">
+        <PropertyRef Name="KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLKIRALA_TBLARABA1">
+    <End Role="TBLARABA" Type="Self.TBLARABA" Multiplicity="0..1" />
+    <End Role="TBLKIRALA" Type="Self.TBLKIRALA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLARABA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKIRALA">
+        <PropertyRef Name="ARABA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarRentalModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLADMIN" EntityType="Self.TBLADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLARABA" EntityType="Self.TBLARABA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLHAKKIMIZDA" EntityType="Self.TBLHAKKIMIZDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLILETISIMBILGI" EntityType="Self.TBLILETISIMBILGI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLILETISIMGEC" EntityType="Self.TBLILETISIMGEC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKATEGORI" EntityType="Self.TBLKATEGORI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLKIRALA" EntityType="Self.TBLKIRALA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBLARABA_TBLKATEGORI1" Association="Self.FK_TBLARABA_TBLKATEGORI1">
+      <End Role="TBLKATEGORI" EntitySet="TBLKATEGORI" />
+      <End Role="TBLARABA" EntitySet="TBLARABA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLKIRALA_TBLARABA1" Association="Self.FK_TBLKIRALA_TBLARABA1">
+      <End Role="TBLARABA" EntitySet="TBLARABA" />
+      <End Role="TBLKIRALA" EntitySet="TBLKIRALA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

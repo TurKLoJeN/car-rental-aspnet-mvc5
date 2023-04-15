@@ -1,0 +1,151 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>OSTCarRental - Admin Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="~/web3/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&amp;family=Roboto:wght@500;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/web3/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/web3/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/web3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/web3/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="/Panel/Index/" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>OSTCarRental</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="~/web3/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">@HttpContext.Current.User.Identity.Name</h6>
+                       
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="/Panel/Index/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Anasayfa</a>
+
+                    <a href="/Araba/Index/" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Arabalar</a>
+                    <a href="/AracKategori/Index/" class="nav-item nav-link"><i class="fa fa-bookmark me-2"></i>Araç Kategorileri</a>
+                    <a href="/Kirala/AracKirala" class="nav-item nav-link"><i class="fa fa-bolt me-2"></i>Araç Kirala</a>
+                    <a href="/Kirala/Index/" class="nav-item nav-link"><i class="fa fa-key me-2"></i>Araç Teslim Al</a>
+                    <a href="/Hakkimda/Index/" class="nav-item nav-link"><i class="fa fa-graduation-cap me-2"></i>Hakkımda Sayfası</a>
+                    <a href="/Iletisim/Index/" class="nav-item nav-link"><i class="fa fa-bars me-2"></i>İletişim Sayfası</a>
+                    <a href="/Ticket/Index/" class="nav-item nav-link"><i class="fa fa-reply-all me-2"></i>Ticketlar</a>
+                    <a href="/Home/Index/" class="nav-item nav-link"><i class="fa fa-eye me-2"></i>Siteye Git</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+
+
+                <div class="navbar-nav align-items-center ms-auto">
+
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="~/web3/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">@HttpContext.Current.User.Identity.Name</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="/Panel/LogOut/" class="dropdown-item">Çıkış Yap</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                
+            </div>
+            <!-- Sale & Revenue End -->
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- Sales Chart End -->
+            <!-- Recent Sales Start -->
+            <!-- Widgets End -->
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            © <a href="#">OSTCarRental</a>, All Right Reserved.
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <font color="red">TurKLoJeN</font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/web3/lib/chart/chart.min.js"></script>
+    <script src="~/web3/lib/easing/easing.min.js"></script>
+    <script src="~/web3/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/web3/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/web3/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/web3/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/web3/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/web3/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarRentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBLARABA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORI" Type="Byte" />
+    <Property Name="ARABAISIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ARABADETAY" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ARABAFIYAT" Type="Int32" />
+    <Property Name="PLAKA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DURUM" Type="Boolean" />
+    <NavigationProperty Name="TBLKATEGORI" Relationship="Self.FK_TBLARABA_TBLKATEGORI1" FromRole="TBLARABA" ToRole="TBLKATEGORI" />
+    <NavigationProperty Name="TBLKIRALA" Relationship="Self.FK_TBLKIRALA_TBLARABA1" FromRole="TBLARABA" ToRole="TBLKIRALA" />
+    <Property Name="RESIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLHAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLILETISIMBILGI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GOOGLEMAP" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLILETISIMGEC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="TARIH" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBLKATEGORI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORIAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLARABA" Relationship="Self.FK_TBLARABA_TBLKATEGORI1" FromRole="TBLKATEGORI" ToRole="TBLARABA" />
+  </EntityType>
+  <EntityType Name="TBLKIRALA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ARABA" Type="Int32" />
+    <Property Name="ISIM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ALISTARIH" Type="DateTime" Precision="0" />
+    <Property Name="GETIRTARIH" Type="DateTime" Precision="0" />
+    <Property Name="DURUM" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TBLARABA" Relationship="Self.FK_TBLKIRALA_TBLARABA1" FromRole="TBLKIRALA" ToRole="TBLARABA" />
+  </EntityType>
+  <Association Name="FK_TBLARABA_TBLKATEGORI1">
+    <End Role="TBLKATEGORI" Type="Self.TBLKATEGORI" Multiplicity="0..1" />
+    <End Role="TBLARABA" Type="Self.TBLARABA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKATEGORI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLARABA">
+        <PropertyRef Name="KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLKIRALA_TBLARABA1">
+    <End Role="TBLARABA" Type="Self.TBLARABA" Multiplicity="0..1" />
+    <End Role="TBLKIRALA" Type="Self.TBLKIRALA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLARABA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKIRALA">
+        <PropertyRef Name="ARABA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarRentalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBLARABA" EntityType="Self.TBLARABA" />
+    <EntitySet Name="TBLHAKKIMIZDA" EntityType="Self.TBLHAKKIMIZDA" />
+    <EntitySet Name="TBLILETISIMBILGI" EntityType="Self.TBLILETISIMBILGI" />
+    <EntitySet Name="TBLILETISIMGEC" EntityType="Self.TBLILETISIMGEC" />
+    <EntitySet Name="TBLKATEGORI" EntityType="Self.TBLKATEGORI" />
+    <EntitySet Name="TBLKIRALA" EntityType="Self.TBLKIRALA" />
+    <AssociationSet Name="FK_TBLARABA_TBLKATEGORI1" Association="Self.FK_TBLARABA_TBLKATEGORI1">
+      <End Role="TBLKATEGORI" EntitySet="TBLKATEGORI" />
+      <End Role="TBLARABA" EntitySet="TBLARABA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLKIRALA_TBLARABA1" Association="Self.FK_TBLKIRALA_TBLARABA1">
+      <End Role="TBLARABA" EntitySet="TBLARABA" />
+      <End Role="TBLKIRALA" EntitySet="TBLKIRALA" />
+    </AssociationSet>
+    <EntitySet Name="TBLADMIN" EntityType="CarRentalModel.TBLADMIN" />
+  </EntityContainer>
+  <EntityType Name="TBLADMIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RESIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

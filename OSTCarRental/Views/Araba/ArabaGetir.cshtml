@@ -1,0 +1,65 @@
+﻿@model OSTCarRental.Models.Entity.TBLARABA
+@{
+    ViewBag.Title = "ArabaGetir";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+@using (Html.BeginForm("ArabaGuncelle", "Araba", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>Araba ID</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Araba</label>
+            @Html.TextBoxFor(k => k.ARABAISIM, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Araba Türü</label>
+            @Html.DropDownListFor(k => k.TBLKATEGORI.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Araba Detay</label>
+            @Html.TextAreaFor(k => k.ARABADETAY, new { @class = "form-control", id="summernote",@rows = "4", @cols = "40" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Günlük Fiyatı</label>
+            @Html.TextBoxFor(k => k.ARABAFIYAT, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Plaka</label>
+            @Html.TextBoxFor(k => k.PLAKA, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Resim</label>
+            <input type="file" name="RESIM" class="form-control" />
+            <br />
+            <center><img src="@Model.RESIM" width="500" /></center>
+        </div>
+        <div style="margin-top:20px;">
+            <button class="btn btn-warning">Araba Güncelle</button>
+        </div>
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>

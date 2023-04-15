@@ -1,0 +1,73 @@
+﻿@using OSTCarRental.Models.Entity
+@model List<TBLARABA>
+@{
+    ViewBag.Title = "Araclar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section data-bs-version="5.1" class="header13 cid-tAPJ4fgJrI mbr-fullscreen" id="header13-b">
+
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
+
+    <div class="align-center container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>Araç Filomuza Göz Atın.</strong></h1>
+
+                <p class="mbr-text mbr-fonts-style mb-3 display-7">Geniş araç filomuza göz atın ve hayalinizdeki araba ile özgürlüğe sürün...</p>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features4 cid-tAPLXwkuTP" id="features4-d">
+
+    <div class="mbr-overlay"></div>
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Araçlarımız</strong></h4>
+
+        </div>
+        <div class="row mt-4">
+            @foreach(var x in Model) {
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="@x.RESIM" alt="@x.ARABAISIM" title="">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5"><strong>@x.ARABAISIM</strong></h5>
+                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">@x.TBLKATEGORI.KATEGORIAD</h6>
+                        <h6 class="item-subtitle mbr-fonts-style mt-1 display-7">
+                            @if (x.DURUM == true)
+                            {
+                                <font color="green">Şuanda Mevcut</font>
+                            }
+                            else
+                            {
+                                <font color="red">Kiralandı</font>
+                            }
+
+                        </h6>
+
+                    </div>
+                    <div class="mbr-section-btn item-footer mt-2">
+                        <a href="/Home/AracGetir/@x.ID" class="btn item-btn btn-white display-7" target="_blank">
+                            Kirala
+                            &gt;
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+            
+
+        </div>
+    </div>
+</section>
+

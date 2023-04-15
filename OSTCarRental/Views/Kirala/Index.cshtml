@@ -1,0 +1,117 @@
+﻿@using OSTCarRental.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.PagedList<TBLKIRALA>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+@if (TempData["AracKirala"] != null)
+{
+    <div class="alert alert-success">@TempData["AracKirala"]</div>
+}
+else if ((TempData["KiraGuncelle"] != null))
+{
+    <div class="alert alert-warning">@TempData["KiraGuncelle"]</div>
+}
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Kiralıkta Olan Araçlar</h6>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Araba</th>
+                        <th scope="col">İsim Soyisim</th>
+                        <th scope="col">Mail</th>
+                        <th scope="col">Telefon</th>
+                        <th scope="col">Alış Tarihi</th>
+                        <th scope="col">Getiriş Tarihi</th>
+                        <th scope="col">Durum</th>
+                        <th scope="col">SİL</th>
+                        <th scope="col">TESLİM AL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in Model)
+                    {
+                        <tr>
+                            <th scope="row"><font color="red">@a.ID</font></th>
+                            <td><font color="white">@a.TBLARABA.ARABAISIM</font></td>
+                            <td><font color="white">@a.ISIM</font></td>
+                            <td><font color="white">@a.MAIL</font></td>
+                            <td><font color="white">@a.TELEFON</font></td>
+                            <td><font color="white">@Convert.ToDateTime(a.ALISTARIH).ToString("dd/MM/yyyy")</font></td>
+                            <td><font color="white">@Convert.ToDateTime(a.GETIRTARIH).ToString("dd/MM/yyyy")</font></td>
+
+                            <td>
+                                @if (a.DURUM == true)
+                                {
+
+
+                                    <i class="fa fa-fw fa-check" style="color:green"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-fw fa-times" style="color:red"></i>
+                                }
+
+                            </td>
+                            <td><a href="/Kirala/KiraGetir/@a.ID" class="btn btn-warning">Güncelle</a></td>
+                            <td><a href="/Kirala/TeslimAlGetir/@a.ID" class="btn btn-success">Teslim Al</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <h6 class="mb-4">Araba Geri Alınmış <i class="fa fa-fw fa-check" style="color:green"></i></h6>
+            <h6 class="mb-4">Araba Müşteride <i class="fa fa-fw fa-times" style="color:red"></i></h6>
+            <style>
+                /* PagedList kutusu için temel stil */
+                .pagedList {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 20px 0;
+                    padding: 10px;
+                    /*background-color: #f2f2f2;*/
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 16px;
+                }
+
+                    /* Sayfa numaraları için stil */
+                    .pagedList a {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        margin: 0 5px;
+                        color: #FF1100;
+                        text-decoration: none;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease;
+                    }
+
+                        .pagedList a:hover {
+                            background-color: #ddd;
+                        }
+
+                    /* Aktif sayfa için stil */
+                    .pagedList .active a {
+                        background-color: #000000;
+                        color: #fff;
+                        border-color: #FF1100;
+                    }
+            </style>
+            <div class="pagedList">
+                @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa, @class = "pagedList" }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

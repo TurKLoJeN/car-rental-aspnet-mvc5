@@ -1,0 +1,33 @@
+﻿@using OSTCarRental.Models.Entity
+@model List<TBLHAKKIMIZDA>
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section data-bs-version="5.1" class="header12 cid-tAPIoLXSHf mbr-parallax-background" id="header12-8">
+
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(0, 0, 0);">
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="card col-12 col-md-12 col-lg-9">
+                <div class="card-wrapper">
+                    @foreach (var x in Model) {
+                    <div class="card-box align-center">
+                        <h1 class="card-title mbr-fonts-style mb-3 display-1">
+                            <strong>Hakkımızda</strong>
+                        </h1>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            @Html.Raw(x.ACIKLAMA)
+                        </p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

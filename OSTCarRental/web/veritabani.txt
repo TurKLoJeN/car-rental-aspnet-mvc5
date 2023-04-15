@@ -1,0 +1,54 @@
+Veritabanı Tabloları
+
+Anasayfada 
+
+YOK
+
+İletişim 
+
+2 tablo olucak
+
+Tablo İletişim Bilgileri
+
+ID
+PHONE
+EMAIL
+GoogleMap
+
+Tablo İletişime Geç
+
+ID
+AD
+MAIL
+PHONE
+MESAJ
+
+Hakkımızda Sayfası
+
+ID
+ACIKLAMA
+
+Kategoriler ( araç türleri )
+
+ID
+KATEGORIAD
+
+Araçlar Sayfası
+
+ID
+ARABAISIM
+KATEGORI (ID ile ilişki kurulacak)
+ARABADETAY
+ARABAFIYAT
+PLAKA
+DURUM
+
+Kiralama
+
+ID
+ISIM
+MAIL
+TELEFON
+ARABA ( araçlar sayfasından id ile ilişki kurulacak ) 
+
+ARAÇ KİRALAMA İŞLEMLERİ İÇİN BİR ADET HAREKET TABLOSU OLUŞTURULACAK

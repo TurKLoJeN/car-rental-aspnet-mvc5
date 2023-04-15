@@ -1,0 +1,58 @@
+﻿@model OSTCarRental.Models.Entity.TBLARABA
+@{
+    ViewBag.Title = "ArabaEkle";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<h2>Yeni Araba Ekle</h2>
+
+@using (Html.BeginForm("ArabaEkle", "Araba", FormMethod.Post, new { enctype = "multipart/form-data" })) {  <div></div>
+    <div style="margin-top:20px">
+        <label>Araba Marka Model</label>
+        @Html.TextBoxFor(k => k.ARABAISIM, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px">
+        <label>Araç Türü</label>
+        @Html.DropDownListFor(k => k.TBLKATEGORI.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px">
+        <label>Araba Detay</label>
+        @Html.TextAreaFor(k => k.ARABADETAY, new { @class = "form-control", id="summernote", @rows = "4", @cols = "40" })
+    </div>
+    <div style="margin-top:20px">
+        <label>Günlük Fiyatı</label>
+        @Html.TextBoxFor(k => k.ARABAFIYAT, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px">
+        <label>Plaka</label>
+        @Html.TextBoxFor(k => k.PLAKA, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:20px">
+        <label>Resim</label>
+        <input type="file" name="RESIM" class="form-control" />
+    </div>
+    <div style="margin-top:20px">
+        <button class="btn btn-info">Araba Ekle</button>
+    </div>
+    <input type="hidden" name="DURUM" value="True" />
+}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>

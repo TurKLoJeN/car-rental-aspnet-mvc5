@@ -1,0 +1,88 @@
+﻿@using OSTCarRental.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.PagedList<TBLILETISIMGEC>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+@if (TempData["TicketSil"] != null)
+{
+    <div class="alert alert-danger">@TempData["TicketSil"]</div>
+}
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Araç Kategorileri</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">TARIH</th>
+                        <th scope="col">AD SOYAD</th>
+                        <th scope="col">MAİL</th>
+                        <th scope="col">TELEFON</th>
+                        <th scope="col">SİL</th>
+                        <th scope="col">GÜNCELLE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in Model)
+                    {
+                        <tr>
+                            <th scope="row"><font color="red">@a.ID</font></th>
+                            <td><font color="white">@Convert.ToDateTime(a.TARIH).ToString("dd/MM/yyyy")</font></td>
+                            <td><font color="white">@a.AD</font></td>
+                            <td><font color="white">@a.MAIL</font></td>
+                            <td><font color="white">@a.PHONE</font></td>
+
+                            <td><a href="/Ticket/TicketSil/@a.ID" class="btn btn-danger">Sil</a></td>
+                            <td><a href="/Ticket/TicketGetir/@a.ID" class="btn btn-warning">Detay</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <style>
+                /* PagedList kutusu için temel stil */
+                .pagedList {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 20px 0;
+                    padding: 10px;
+                    /*background-color: #f2f2f2;*/
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 16px;
+                }
+
+                    /* Sayfa numaraları için stil */
+                    .pagedList a {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        margin: 0 5px;
+                        color: #FF1100;
+                        text-decoration: none;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        transition: background-color 0.3s ease;
+                    }
+
+                        .pagedList a:hover {
+                            background-color: #ddd;
+                        }
+
+                    /* Aktif sayfa için stil */
+                    .pagedList .active a {
+                        background-color: #000000;
+                        color: #fff;
+                        border-color: #FF1100;
+                    }
+            </style>
+            <div class="pagedList">
+                @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa, @class = "pagedList" }))
+            </div>
+        </div>
+    </div>
+</div>
+

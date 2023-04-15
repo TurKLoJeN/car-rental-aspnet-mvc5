@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8f604862c964631b2a51f2230719f61" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLARABA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLHAKKIMIZDA" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLILETISIMBILGI" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLILETISIMGEC" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLKATEGORI" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLKIRALA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="CarRentalModel.FK_TBLARABA_TBLKATEGORI1" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalModel.FK_TBLKIRALA_TBLARABA1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CarRentalModel.TBLADMIN" Width="1.5" PointX="8.5" PointY="1.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

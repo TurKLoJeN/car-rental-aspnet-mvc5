@@ -1,0 +1,36 @@
+﻿@model OSTCarRental.Models.Entity.TBLILETISIMGEC
+@{
+    ViewBag.Title = "TicketGetir";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>Araba ID</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Ad Soyad</label>
+            @Html.TextBoxFor(k => k.TARIH, new { @class = "form-control", @readonly="readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Günlük Fiyatı</label>
+            @Html.TextBoxFor(k => k.AD, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Plaka</label>
+            @Html.TextBoxFor(k => k.PHONE, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Resim</label>
+            @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Araba Detay</label>
+            @Html.TextAreaFor(k => k.MESSAGE, new { @class = "form-control", @rows = "7", @cols = "40" })
+        </div>
+        <div style="margin-top:20px;">
+            <a href="/Ticket/Index/" class="btn btn-danger">Geri Dön</a>
+        </div>
+    </div>
+

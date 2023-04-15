@@ -1,0 +1,20 @@
+﻿@model OSTCarRental.Models.Entity.TBLKATEGORI
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<h2>Kategori Ekle</h2>
+
+<form class="form-group" method="post">
+
+    <div></div>  
+    <div style="margin-top:20px">
+        <label>Kategori İsmi</label>
+        @Html.TextBoxFor(k => k.KATEGORIAD, new { @class = "form-control"})
+    </div>
+    <div style="margin-top:20px">
+        <button class="btn btn-info">Kategori Ekle</button>
+    </div>
+</form>
+

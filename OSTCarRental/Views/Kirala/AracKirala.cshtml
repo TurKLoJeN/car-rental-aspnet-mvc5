@@ -1,0 +1,36 @@
+﻿@model OSTCarRental.Models.Entity.TBLKIRALA
+@{
+    ViewBag.Title = "AracKirala";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+    <form class="form-group" method="post">
+
+        <div></div>
+        <div style="margin-top:20px">
+            <label>Araba</label>
+            @Html.DropDownListFor(k => k.TBLARABA.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>İsim Soyisim</label>
+            @Html.TextBoxFor(k => k.ISIM, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Mail</label>
+            @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Telefon</label>
+            @Html.TextBoxFor(k => k.TELEFON, new { @class = "form-control" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Alış Tarihi</label>
+            <input type="text" class="form-control" name="ALISTARIH" value="@DateTime.Now.ToShortDateString()" readonly="readonly" />
+        </div>
+        <div style="margin-top:20px">
+            <label>Teslim Tarihi</label>
+            <input type="text" class="form-control" name="GETIRTARIH" value="@DateTime.Now.AddDays(1).ToShortDateString()" />
+        </div>
+        <div style="margin-top:20px">
+            <button class="btn btn-info">Arabayı Kirala</button>
+        </div>
+    </form>

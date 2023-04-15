@@ -1,0 +1,45 @@
+﻿@model OSTCarRental.Models.Entity.TBLKIRALA
+@{
+    ViewBag.Title = "TeslimAlGetir";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<h2>Teslim Alınacak Araç Bilgileri</h2>
+
+@using (Html.BeginForm("TeslimAl", "Kirala", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>İşlem ID</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Araba</label>
+            @Html.DropDownListFor(k => k.TBLARABA.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>İsim Soyisim</label>
+            @Html.TextBoxFor(k => k.ISIM, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Mail Adresi</label>
+            @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Telefon</label>
+            @Html.TextBoxFor(k => k.TELEFON, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Alış Tarihi</label>
+            @Html.TextBoxFor(k => k.ALISTARIH, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px">
+            <label>Getiriş Tarihi</label>
+            @Html.TextBoxFor(k => k.GETIRTARIH, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-top:20px;">
+            <button class="btn btn-success">Arabayı Teslim Al</button>
+        </div>
+    </div>
+}

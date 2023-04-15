@@ -1,0 +1,39 @@
+﻿@model OSTCarRental.Models.Entity.TBLILETISIMBILGI
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<h2>İletişim Bilgilerini Güncelle</h2>
+
+@if ((TempData["IletisimGuncelle"] != null))
+{
+    <div class="alert alert-success">@TempData["IletisimGuncelle"]</div>
+}
+
+@using (Html.BeginForm("IletisimGuncelle", "Iletisim", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <div style="margin-bottom:15px">
+            <label>ID</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Telefon</label>
+            @Html.TextBoxFor(k => k.PHONE, new { @class = "form-control"})
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Mail Adresi</label>
+            @Html.TextBoxFor(k => k.EMAIL, new { @class = "form-control"})
+        </div>
+        <div style="margin-bottom:15px">
+            <label>Açık Adres</label>
+            @Html.TextAreaFor(k => k.GOOGLEMAP, new { @class = "form-control", @rows = "5", @cols = "40" })
+        </div>
+        <div style="margin-top:20px;">
+            <button class="btn btn-warning">Kira Güncelle</button>
+        </div>
+    </div>
+}
+

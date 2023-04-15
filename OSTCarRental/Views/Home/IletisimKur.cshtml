@@ -1,0 +1,104 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+    <title>İletişim Kur</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/web2/css/style.css">
+
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">OSTCarRental</h2>
+                </div>
+            </div>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-success">@TempData["Message"]</div>
+
+                <script>
+        setTimeout(function() {
+            window.location.href = "/Home/Index/";
+        }, 5000); // 5 saniye bekleyip yönlendirme yap
+                </script>
+            }
+
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Contact Us</h3>
+                                    <form method="POST" class="contactForm" novalidate="novalidate">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="name">Adınız Soyadınız</label>
+                                                    <input type="text" class="form-control" name="AD" id="name" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="email">Mail Adresiniz</label>
+                                                    <input type="email" class="form-control" name="MAIL" id="email" placeholder="Mail Adresiniz">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Telefon</label>
+                                                    <input type="tel" class="form-control" name="PHONE" id="subject" placeholder="Telefon">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="#">Mesajınız</label>
+                                                    <textarea name="MESSAGE" class="form-control" id="message" cols="30" rows="4" placeholder="Mesajınız"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="hidden" class="form-control" name="TARIH" id="subject" value="@DateTime.Now.ToShortDateString()">
+                                                    <button class="btn btn-info" id="Btn1">Mesaj Gönder</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div runat="server" class="info-wrap w-100 p-5 img" style="background-image: url(https://i.hizliresim.com/hgw5iqd.jpg);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/web2/js/jquery.min.js"></script>
+    <script src="~/web2/js/popper.js"></script>
+    <script src="~/web2/js/bootstrap.min.js"></script>
+    <script src="~/web2/js/jquery.validate.min.js"></script>
+    <script src="~/web2/js/main.js"></script>
+
+
+
+
+</body>
+</html>

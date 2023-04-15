@@ -1,0 +1,147 @@
+﻿@model OSTCarRental.Models.Siniflarim.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/PanelLayout.cshtml";
+}
+
+<div class="col-sm-6 col-xl-3">
+    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-car fa-3x text-primary"></i>
+        <div class="ms-3">
+            <p class="mb-2">Filodaki Araç Sayısı</p>
+            <h6 class="mb-0">@ViewBag.dgr1</h6>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-xl-3">
+    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-bookmark fa-3x text-primary"></i>
+        <div class="ms-3">
+            <p class="mb-2">Araç Türleri</p>
+            <h6 class="mb-0">@ViewBag.dgr2</h6>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-xl-3">
+    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-key fa-3x text-primary"></i>
+        <div class="ms-3">
+            <p class="mb-2">Anlık Kiralık Araçlar</p>
+            <h6 class="mb-0">@ViewBag.dgr3</h6>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6 col-xl-3">
+    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-reply-all fa-3x text-primary"></i>
+        <div class="ms-3">
+            <p class="mb-2">Ticket Sayısı</p>
+            <h6 class="mb-0">@ViewBag.dgr4</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-12 col-xl-6">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Arabalar</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Araç Türü</th>
+                    <th scope="col">Araba Marka Model</th>
+                    <th scope="col">Günlük Fiyatı</th>
+                    <th scope="col">Plaka</th>
+                    <th scope="col">Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.Araba)
+                {
+                    <tr>
+                        <th scope="row"><font color="red">@a.ID</font></th>
+                        <td><font color="yellow">@a.TBLKATEGORI.KATEGORIAD</font></td>
+
+                        <td><font color="white">@a.ARABAISIM</font></td>
+                        <td><font color="white">@a.ARABAFIYAT</font></td>
+                        <td><font color="white">@a.PLAKA</font></td>
+                        
+                        <td>
+                            @if (a.DURUM == true)
+                            {
+
+
+                                <i class="fa fa-fw fa-check" style="color:green"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-fw fa-times" style="color:red"></i>
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-sm-12 col-xl-6">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Araç Türleri</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Araç Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var k in Model.Kategori)
+                {
+                    <tr>
+                        <th scope="row"><font color="red">@k.ID</font></th>
+                        <td><font color="white">@k.KATEGORIAD</font></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Kiralanmışlar</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Araba</th>
+                        <th scope="col">İsim Soyisim</th>
+                        <th scope="col">Mail Adresi</th>
+                        <th scope="col">Telefon</th>
+                        <th scope="col">Alış Tarihi</th>
+                        <th scope="col">Getiriş Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var kr in Model.Kirala)
+                    {
+                        <tr>
+                            <th scope="row"><font color="red">@kr.ID</font></th>
+                            <td><font color="yellow">@kr.ARABA</font></td>
+                            <td><font color="white">@kr.ISIM</font></td>
+                            <td><font color="white">@kr.MAIL</font></td>
+                            <td><font color="white">@kr.TELEFON</font></td>
+                            <td><font color="white">@kr.ALISTARIH</font></td>
+                            <td><font color="white">@kr.GETIRTARIH</font></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
